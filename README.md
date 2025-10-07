@@ -4,7 +4,6 @@
 ![Groovy](https://img.shields.io/badge/Groovy-2.4-blue?logo=apachegroovy&logoColor=white)
 ![MySQL](https://img.shields.io/badge/Database-MySQL-4479A1?logo=mysql&logoColor=white)
 ![RESTful](https://img.shields.io/badge/API-RESTful-FF9800)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 Sistema backend desarrollado en **Grails + Groovy** con base de datos **MySQL**, que permite administrar menús y platillos de un restaurante mediante una API **RESTful** moderna, segura y estructurada.
 
