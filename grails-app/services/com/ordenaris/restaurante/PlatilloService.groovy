@@ -86,14 +86,32 @@ class PlatilloService {
                     status: 404
                 ]
             }
+        
+            Date fechaDisponible = null
+            def hoy = new Date()
+            def estadoInicial = 1
 
-            // insert into platillo (...)
+            if(data.fechaDisponible){
+                if(!(data.fechaDisponible ==~ /^\d{4}-\d{2}-\d{2}$/)){
+                    return [
+                        resp: [ success: false, mensaje: "La fecha disponible debe tener el formato yyyy-MM-dd" ],
+                        status: 400
+                    ]
+                } else {
+                    fechaDisponible = Date.parse("yyyy-MM-dd", data.fechaDisponible)
+                }
+
+                if(fechaDisponible && fechaDisponible.after(hoy)){
+                    estadoInicial =0
+                }
+            }
             def nuevo = new Platillo([
                 nombre: data.nombre,
                 costo: data.costo,
                 descripcion: data.descripcion ?: "",
                 platillosDisponibles: data.platillosDisponibles ?: -1,
-                fechaDisponible: data.fechaDisponible ? Date.parse("yyyy-MM-dd", data.fechaDisponible) : null,
+                fechaDisponible: fechaDisponible, 
+                status: estadoInicial,
                 tipoMenu: tipoPlatillo
             ]).save(flush: true, failOnError: true)
 

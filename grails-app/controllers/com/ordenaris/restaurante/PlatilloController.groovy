@@ -71,6 +71,8 @@ class PlatilloController {
         def respuesta = platilloService.nuevoPlatillo(uuid, data)
         return respond(respuesta.resp, status: respuesta.status)
 }
+
+
    // Edita un platillo existente por su UUID
     def editarPlatillo(String uuid) {
         def data = request.JSON
